@@ -1,0 +1,17 @@
+<?php
+
+// We need the referral_send_email module's hook_userpoints to run after the userpoints_extend_role module's version. 
+
+/**
+ * Implements hook_install().
+ */
+function x_contact_option_install() 
+{
+  if (module_exists('contact'))
+  {
+    $weight = db_query("SELECT weight FROM {system} WHERE type = 'module' AND name = 'contact'")->fetchField();
+    db_query("UPDATE {system} SET weight = :weight WHERE type = 'module' AND name = 'x_contact_option'", 
+      array(':weight' => $weight+5));
+  }
+}
+

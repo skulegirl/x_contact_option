@@ -1,0 +1,5 @@
+name = x_contact_option
+description = enable / disable contact to individual users via Contact form
+version = "7.x-dev"
+project = "x_contact_option"
+core = "7.x"

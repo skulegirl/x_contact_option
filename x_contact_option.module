@@ -1,0 +1,21 @@
+<?php
+/**
+ * implementation of hook_perm
+ * only users who belong to roles with this permission can
+ * use personal contact form
+ */
+/**
+ * implementation of hook_form_alter
+ * hide this option for users without the privilege
+ */
+function x_contact_option_form_alter(&$form, $form_state, $form_id)
+{
+  if ($form_id == 'user_profile_form')
+  {
+		if (!user_access('access user contact forms'))
+    {
+			unset ($form['contact']);
+		}
+	}
+}
+
